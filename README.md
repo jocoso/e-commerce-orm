@@ -1,8 +1,11 @@
-# Employee Tracker
+
+# E-commerce Back End
 
 ## Description
 
-Employee Tracker is a command-line application that allows users to manage a company's employee database using Node.js, Inquirer, and PostgreSQL. It provides an interface for users to view and manage departments, roles, and employees within a company.
+Internet retail, also known as e-commerce, plays a significant role within the electronics industry, empowering businesses and consumers alike to conveniently engage in online buying and selling of electronic products. In the latest available data from 2021, the industry in the United States alone was estimated to have generated the substantial amount of US$2.54 trillion, according to the United Nations Conference on Trade and Development. E-commerce platforms like Shopify and WooCommerce provide a suite of services to businesses of all sizes. Due to the prevalence of these platforms, developers should understand the fundamental architecture of e-commerce sites.
+
+This project involves building the back end for an e-commerce site. The task is to take a working Express.js API and configure it to use Sequelize to interact with a PostgreSQL database.
 
 ## Table of Contents
 
@@ -15,71 +18,73 @@ Employee Tracker is a command-line application that allows users to manage a com
 
 ## Installation
 
-1. **Clone the repository**:
-   ```sh
-   git clone https://github.com/jocoso/employee-tracker.git
-   cd employee-tracker
-   ```
-
-2. **Install dependencies**:
-   Ensure you have [Node.js](https://nodejs.org/) installed. Then, run:
-   ```sh
-   npm install
-   ```
-
-3. **Set up PostgreSQL**:
-   - Ensure you have PostgreSQL installed and running.
-   - Create a `.env` file in the root directory of the project and add your PostgreSQL connection details:
-     ```env
-     PG_HOST=your_postgres_hostname
-     PG_PORT=5432
-     PG_USER=your_postgres_user
-     PG_PASSWORD=your_postgres_password
-     PG_DATABASE=your_postgres_database
-     ```
-
-4. **Set up the database schema and seed data**:
-   Run the following command to create the tables and insert initial data:
-   ```sh
-   node db/connection.js
-   ```
+1. Clone the repository:
+    ```bash
+    git clone <repository-url>
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd e-commerce-orm
+    ```
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
+4. Create a `.env` file in the root directory and add your PostgreSQL credentials:
+    ```
+    DB_NAME='your_database_name'
+    DB_USER='your_postgresql_username'
+    DB_PASSWORD='your_postgresql_password'
+    ```
 
 ## Usage
 
-1. **Start the application**:
-   ```sh
-   npm start
-   ```
+1. Create the database:
+    ```bash
+    psql -U <your_postgresql_username> -d <your_database_name> -f db/schema.sql
+    ```
+2. Seed the database:
+    ```bash
+    npm run seed
+    ```
+3. Start the server:
+    ```bash
+    npm start
+    ```
+4. Use Insomnia Core to test the API routes.
 
-2. **Follow the prompts**:
-   Use the arrow keys to navigate through the options and press `Enter` to select an action. You can:
-   - View all departments
-   - View all roles
-   - View all employees
-   - Add a department
-   - Add a role
-   - Add an employee
-   - Update an employee role
+### Walkthrough Video
+
+A walkthrough video demonstrating the functionality of the application and all of the acceptance criteria being met can be found 
+
+[here](link-to-walkthrough-video).
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://mit-license.org/) file for details.
+This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
 
 ## Tests
 
-To run tests, run the following command:
-```sh
+To run tests, use the following command:
+
+```bash
 npm test
 ```
 
 ## Questions
 
-If you have any questions about the project, please open an issue or contact me directly at [joshua.collado022@gmail.com](mailto:joshua.collado022@gmail.com). You can find more of my work at [jocoso](https://github.com/jocoso).
+If you have any questions about the project, feel free to reach out:
 
-## Link to Walkthrough Video
+- GitHub: [Jocoso](https://github.com/jocoso)
 
-Watch the [walkthrough video](https://youtu.be/o1808gFCGGU) to see the application in action and understand how to use it.
