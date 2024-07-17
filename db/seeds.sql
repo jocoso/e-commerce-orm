@@ -1,20 +1,26 @@
--- Insert seed data into the departments table
-INSERT INTO departments (name) VALUES 
-('Engineering'),
-('Human Resources'),
-('Finance'),
-('Marketing');
+-- Insert categories
+INSERT INTO category (category_name) VALUES ('Electronics');
+INSERT INTO category (category_name) VALUES ('Books');
+INSERT INTO category (category_name) VALUES ('Clothing');
+INSERT INTO category (category_name) VALUES ('Toys');
 
--- Insert seed data into the roles table
-INSERT INTO roles (title, salary, department_id) VALUES 
-('Software Engineer', 80000, (SELECT id FROM departments WHERE name = 'Engineering')),
-('HR Manager', 60000, (SELECT id FROM departments WHERE name = 'Human Resources')),
-('Accountant', 55000, (SELECT id FROM departments WHERE name = 'Finance')),
-('Marketing Specialist', 50000, (SELECT id FROM departments WHERE name = 'Marketing'));
+-- Insert products
+INSERT INTO product (price, stock, category_id) VALUES (299.99, 50, 1);
+INSERT INTO product (price, stock, category_id) VALUES (19.99, 100, 2);
+INSERT INTO product (price, stock, category_id) VALUES (49.99, 75, 3);
+INSERT INTO product (price, stock, category_id) VALUES (15.99, 200, 4);
+INSERT INTO product (price, stock, category_id) VALUES (99.99, 20, 1);
 
--- Insert seed data into the employees table
-INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES 
-('John', 'Doe', (SELECT id FROM roles WHERE title = 'Software Engineer'), 2),
-('Jane', 'Smith', (SELECT id FROM roles WHERE title = 'HR Manager'), NULL),
-('Robert', 'Johnson', (SELECT id FROM roles WHERE title = 'Accountant'), NULL),
-('Emily', 'Davis', (SELECT id FROM roles WHERE title = 'Marketing Specialist'), NULL);
+-- Insert tags
+INSERT INTO tag (tag_name) VALUES ('New Arrival');
+INSERT INTO tag (tag_name) VALUES ('Discount');
+INSERT INTO tag (tag_name) VALUES ('Popular');
+INSERT INTO tag (tag_name) VALUES ('Limited Edition');
+
+-- Insert productTag relationships
+INSERT INTO productTag (product_id, tag_id) VALUES (1, 1); -- Electronics New Arrival
+INSERT INTO productTag (product_id, tag_id) VALUES (2, 2); -- Books Discount
+INSERT INTO productTag (product_id, tag_id) VALUES (3, 3); -- Clothing Popular
+INSERT INTO productTag (product_id, tag_id) VALUES (4, 1); -- Toys New Arrival
+INSERT INTO productTag (product_id, tag_id) VALUES (5, 4); -- Electronics Limited Edition
+INSERT INTO productTag (product_id, tag_id) VALUES (1, 3); -- Electronics Popular

@@ -1,6 +1,9 @@
 const express = require('express');
 const routes = require('./routes');
-// import sequelize connection
+const sequelize = require('./config/connection');
+
+// Import models to sync them with the database
+const { Category, Product, Tag, ProductTag } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -8,9 +11,11 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(routes);
+// Use routes
+app.use('/api/products', require('./routes/api/product-routes'));
+app.use('/api/categories', require('./routes/api/category-routes'));
+app.use('/api/tags', require('./routes/api/tag-routes'));
 
-// sync sequelize models to the database, then turn on the server
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });
